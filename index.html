@@ -1,0 +1,48 @@
+<html>
+	<head>
+		<title>Flourish office warming</title>
+		<style>
+			body {
+				margin: 0;
+				background:#000;
+			}
+
+			iframe {
+				border: none;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<iframe></iframe>
+		
+
+		<script src="artworks.js"></script>
+		<script>
+			var index = 0;
+
+			artworks.sort(function(){
+				return Math.random() > Math.random()
+			})
+
+			function updateArtwork(initial){
+				var time = initial ? 0 : 3000;
+				setTimeout( function() { 
+					document.querySelector('iframe').src = artworks[index];
+
+					if(index === artworks.length){
+						location.reload();
+					}else{
+						index++
+						updateArtwork();
+					}
+				},time)
+			}
+
+			updateArtwork(true);
+			
+		</script>
+	</body>
+</html>
